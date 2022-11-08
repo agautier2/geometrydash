@@ -11,18 +11,17 @@
 #define PI 3.14159265358979224
 
 
-int carre(int x){
+float carre(int x){
     return x*x;
 }
 
-int racine(int x){
+float racine(int x){
     return pow(x,0.5);
 }
 
 void error(){
     printf("Calcul impossible");
 }
-
 
 typedef struct point{
     int x;
@@ -57,8 +56,8 @@ bool isNotAligne(point a, point b,point c){
 return true;
 }
     
-int longueur_ligne(ligne ligne1){
-    int longueur;
+float longueur_ligne(ligne ligne1){
+    float longueur;
     longueur = racine(carre(ligne1.b.x-ligne1.a.x)+carre(ligne1.b.y-ligne1.a.y));
     return longueur;
 }
@@ -69,8 +68,8 @@ float angle_deg(point a,point b, point c){
     ligne B = {b,c};
     ligne C = {c,a};
     angle = carre(longueur_ligne(B))-carre(longueur_ligne(A))-carre(longueur_ligne(C))/(-2*longueur_ligne(A)*longueur_ligne(C));
-    printf("long a : %d / long b : %d / long c : %d\n",longueur_ligne(A),longueur_ligne(B),longueur_ligne(C));
-    return acos(angle)*360/(2*PI);  
+    printf("long a : %f / long b : %f / long c : %f\n",longueur_ligne(A),longueur_ligne(B),longueur_ligne(C));
+    return acos(angle)*360/(PI);  
 } 
 
 bool is_quadrilatere(quadrilatere quadri1){
@@ -135,7 +134,7 @@ printf("a(%d,%d) b(%d,%d) c(%d,%d) d(%d,%d)\n",a.x,a.y,b.x,b.y,c.x,c.y,d.x,d.y);
 //LONGUEUR ab
 printf("\033[0;31m""------------calcul longueur ab ------------\033[0;37m\n");
 ligne ligne1 ={a,b};
-printf("longueur = %d\n",longueur_ligne(ligne1));
+printf("longueur = %f\n",longueur_ligne(ligne1));
 
 //angle_deg abc
 printf("\033[0;31m""------------calcul angle abc ------------\033[0;37m\n");
